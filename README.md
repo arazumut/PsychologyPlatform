@@ -117,13 +117,6 @@ Tüm API endpointleri Swagger UI ile belgelenmiştir. Sunucu çalışırken `/ap
 - İçerik yönetebilir
 - Sistem ayarlarını değiştirebilir
 
-## 🌐 Çoklu Dil Desteği
-
-Platform şu dilleri desteklemektedir:
-- 🇹🇷 Türkçe
-- 🇺🇸 İngilizce
-- 🇩🇪 Almanca
-- 🇫🇷 Fransızca
 
 ## 📱 Mobil Uyumluluk
 
