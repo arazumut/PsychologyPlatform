@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #4b6cb7;
+            color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ddd;
+        }
+        
+        .page-title {
+            background-color: #f0f4ff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .page-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .filters {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filters h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .filter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .filter-actions {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4b6cb7;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #3a5491;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: #4b6cb7;
+            border: 1px solid #4b6cb7;
+        }
+        
+        .btn-outline:hover {
+            background-color: #f0f4ff;
+        }
+        
+        .therapist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .therapist-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .therapist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .therapist-image {
+            height: 200px;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .therapist-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .therapist-card:hover .therapist-image img {
+            transform: scale(1.05);
+        }
+        
+        .therapist-info {
+            padding: 20px;
+        }
+        
+        .therapist-name {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .therapist-specialty {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .therapist-rating {
+            color: #f39c12;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .therapist-description {
+            color: #666;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .therapist-action {
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .pagination-item {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .pagination-item:hover {
+            background-color: #f0f4ff;
+            color: #4b6cb7;
+        }
+        
+        .pagination-item.active {
+            background-color: #4b6cb7;
+            color: white;
+        }
+        
+        .pagination-item.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .no-therapists {
+            text-align: center;
+            padding: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .no-therapists h3 {
+            color: #666;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #4b6cb7;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .filter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Psikolojik Destek Platformu</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/terapistler">Terapistler</a></li>
+                    <li><a href="/hizmetler">Hizmetler</a></li>
+                    <li><a href="/hakkimizda">Hakkımızda</a></li>
+                    <li><a href="/api/auth/login">Giriş Yap</a></li>
+                    <li><a href="/api/auth/register">Kayıt Ol</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-title">
+        <div class="container">
+            <h1>Uzman Terapistlerimiz</h1>
+            <p>Size en uygun terapisti seçin ve online görüşmelere hemen başlayın.</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="filters">
+            <h3>Terapist Filtrele</h3>
+            <form class="filter-form" action="/terapistler" method="GET">
+                <div class="filter-group">
+                    <label for="specialty">Uzmanlık Alanı</label>
+                    <select id="specialty" name="specialty">
+                        <option value="">Tümü</option>
+                        <option value="anxiety">Anksiyete / Kaygı Bozuklukları</option>
+                        <option value="depression">Depresyon</option>
+                        <option value="family">Aile Terapisi</option>
+                        <option value="couple">Çift Terapisi</option>
+                        <option value="trauma">Travma ve TSSB</option>
+                        <option value="addiction">Bağımlılık</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="experience">Deneyim</label>
+                    <select id="experience" name="experience">
+                        <option value="">Tümü</option>
+                        <option value="0-3">0-3 yıl</option>
+                        <option value="3-5">3-5 yıl</option>
+                        <option value="5-10">5-10 yıl</option>
+                        <option value="10+">10+ yıl</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="rating">En Düşük Puan</label>
+                    <select id="rating" name="rating">
+                        <option value="">Tümü</option>
+                        <option value="4">4 ve üzeri</option>
+                        <option value="4.5">4.5 ve üzeri</option>
+                    </select>
+                </div>
+                <div class="filter-actions">
+                    <button type="submit" class="btn">Filtrele</button>
+                    <button type="reset" class="btn btn-outline">Sıfırla</button>
+                </div>
+            </form>
+        </div>
+        
+        <% if (therapists && therapists.length > 0) { %>
+            <div class="therapist-grid">
+                <% therapists.forEach(therapist => { %>
+                    <div class="therapist-card">
+                        <div class="therapist-image">
+                            <img src="/images/avatars/<%= therapist.User.avatar || 'default-avatar.png' %>" alt="<%= therapist.User.firstName %> <%= therapist.User.lastName %>">
+                        </div>
+                        <div class="therapist-info">
+                            <h3 class="therapist-name"><%= therapist.User.firstName %> <%= therapist.User.lastName %></h3>
+                            <p class="therapist-specialty"><%= therapist.title %> - <%= therapist.specialty %></p>
+                            <div class="therapist-rating">
+                                <% for(let i = 0; i < Math.floor(therapist.rating || 0); i++) { %>
+                                    ★
+                                <% } %>
+                                <% for(let i = 0; i < (5 - Math.floor(therapist.rating || 0)); i++) { %>
+                                    ☆
+                                <% } %>
+                                (<%= therapist.rating || 0 %>/5)
+                            </div>
+                            <p class="therapist-description"><%= therapist.bio || 'Bu terapist henüz biyografi eklememiştir.' %></p>
+                            <div class="therapist-action">
+                                <a href="/terapist/<%= therapist.id %>" class="btn">Detayları Görüntüle</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="pagination-item disabled">«</a>
+                <a href="#" class="pagination-item active">1</a>
+                <a href="#" class="pagination-item">2</a>
+                <a href="#" class="pagination-item">3</a>
+                <a href="#" class="pagination-item">»</a>
+            </div>
+        <% } else { %>
+            <div class="no-therapists">
+                <h3>Bu kriterlere uygun terapist bulunamadı.</h3>
+                <p>Lütfen filtreleri değiştirerek tekrar deneyin.</p>
+            </div>
+        <% } %>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Hızlı Erişim</h4>
+                    <ul>
+                        <li><a href="/">Ana Sayfa</a></li>
+                        <li><a href="/terapistler">Terapistler</a></li>
+                        <li><a href="/hizmetler">Hizmetler</a></li>
+                        <li><a href="/hakkimizda">Hakkımızda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Yardım</h4>
+                    <ul>
+                        <li><a href="/sss">Sıkça Sorulan Sorular</a></li>
+                        <li><a href="/iletisim">İletişim</a></li>
+                        <li><a href="/gizlilik">Gizlilik Politikası</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>İletişim</h4>
+                    <ul>
+                        <li>Email: info@psikdestekplatformu.com</li>
+                        <li>Telefon: +90 212 123 45 67</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; <%= new Date().getFullYear() %> Psikolojik Destek Platformu. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

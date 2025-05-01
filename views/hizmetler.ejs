@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #4b6cb7;
+            color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ddd;
+        }
+        
+        .page-title {
+            background-color: #f0f4ff;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .page-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .services-intro {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .services-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .services {
+            padding: 40px 0 80px;
+        }
+        
+        .service-item {
+            display: flex;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            transition: transform 0.3s;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-image {
+            flex: 0 0 40%;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .service-content {
+            flex: 0 0 60%;
+            padding: 40px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.8rem;
+            color: #4b6cb7;
+            margin-bottom: 15px;
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .price-info {
+            background-color: #f9fafc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4b6cb7;
+        }
+        
+        .price-info .price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .price-info .details {
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #4b6cb7;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #3a5491;
+        }
+        
+        .features-section {
+            background-color: #f0f4ff;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .features-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-box {
+            background-color: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #4b6cb7;
+            margin-bottom: 20px;
+        }
+        
+        .feature-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .feature-box p {
+            color: #666;
+        }
+        
+        .testimonials {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .testimonials h2 {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            text-align: left;
+        }
+        
+        .testimonial-card::before {
+            content: "“";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: #f0f4ff;
+            font-family: Georgia, serif;
+            line-height: 0.5;
+            z-index: 0;
+        }
+        
+        .testimonial-text {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info {
+            text-align: left;
+        }
+        
+        .author-name {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .author-title {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .btn-white {
+            background-color: white;
+            color: #4b6cb7;
+        }
+        
+        .btn-white:hover {
+            background-color: #f0f0f0;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #4b6cb7;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 992px) {
+            .service-item {
+                flex-direction: column;
+            }
+            
+            .service-image {
+                flex: 0 0 300px;
+                height: 300px;
+            }
+            
+            .service-content {
+                flex: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .service-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Psikolojik Destek Platformu</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/terapistler">Terapistler</a></li>
+                    <li><a href="/hizmetler">Hizmetler</a></li>
+                    <li><a href="/hakkimizda">Hakkımızda</a></li>
+                    <li><a href="/api/auth/login">Giriş Yap</a></li>
+                    <li><a href="/api/auth/register">Kayıt Ol</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-title">
+        <div class="container">
+            <h1>Psikolojik Destek Hizmetlerimiz</h1>
+            <p>Platformumuzda sunduğumuz çeşitli psikolojik destek hizmetleri ile size özel çözümler sunuyoruz.</p>
+        </div>
+    </section>
+    
+    <section class="services-intro">
+        <div class="container">
+            <p>Online psikolojik destek platformumuz, uzman psikologlar eşliğinde bireysel terapiden çift ve aile danışmanlığına kadar geniş bir yelpazede hizmetler sunmaktadır. Kendi evinizin veya ofisinizin konforunda, güvenli ve etkili terapi seanslarına katılabilirsiniz.</p>
+        </div>
+    </section>
+    
+    <section class="services">
+        <div class="container">
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Bireysel Terapi">
+                </div>
+                <div class="service-content">
+                    <h3>Bireysel Terapi</h3>
+                    <p>Bireysel terapi, kişinin yaşadığı zorluklarla başa çıkmak, kendini daha iyi anlamak ve kişisel gelişimini desteklemek için bir psikolog ile birebir görüşmeleri içerir. Depresyon, kaygı bozuklukları, stres, özgüven sorunları ve diğer psikolojik zorluklar için etkili bir yöntemdir.</p>
+                    <div class="price-info">
+                        <div class="price">300 TL - 500 TL / Seans</div>
+                        <div class="details">Seans süresi: 45-50 dakika</div>
+                    </div>
+                    <a href="/randevu/bireysel" class="btn">Randevu Al</a>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Çift Terapisi">
+                </div>
+                <div class="service-content">
+                    <h3>Çift Terapisi</h3>
+                    <p>Çift terapisi, ilişkilerde yaşanan sorunların çözümüne yardımcı olur. İletişim sorunları, güven eksikliği, bağlanma sorunları ve diğer ilişki dinamikleri üzerine çalışarak çiftlerin daha sağlıklı ve mutlu bir ilişki kurmasına destek olur.</p>
+                    <div class="price-info">
+                        <div class="price">400 TL - 600 TL / Seans</div>
+                        <div class="details">Seans süresi: 60-70 dakika</div>
+                    </div>
+                    <a href="/randevu/cift" class="btn">Randevu Al</a>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="/images/services/family-therapy.jpg" alt="Aile Terapisi">
+                </div>
+                <div class="service-content">
+                    <h3>Aile Terapisi</h3>
+                    <p>Aile terapisi, aile üyeleri arasındaki ilişkileri iyileştirmeye ve aile içi sorunları çözmeye yardımcı olur. Ebeveyn-çocuk ilişkileri, aile içi çatışmalar, iletişim sorunları ve kritik yaşam geçişleri sırasında ailelere destek sağlar.</p>
+                    <div class="price-info">
+                        <div class="price">450 TL - 650 TL / Seans</div>
+                        <div class="details">Seans süresi: 60-80 dakika</div>
+                    </div>
+                    <a href="/randevu/aile" class="btn">Randevu Al</a>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="/images/services/child-therapy.jpg" alt="Çocuk ve Ergen Terapisi">
+                </div>
+                <div class="service-content">
+                    <h3>Çocuk ve Ergen Terapisi</h3>
+                    <p>Çocuk ve ergen terapisi, çocukların ve gençlerin duygusal, davranışsal ve gelişimsel zorluklarla başa çıkmalarına yardımcı olur. Kaygı, depresyon, dikkat eksikliği, davranış sorunları ve travma gibi konularda uzmanlaşmış terapistlerimiz çocuklara ve ailelere destek sağlar.</p>
+                    <div class="price-info">
+                        <div class="price">350 TL - 550 TL / Seans</div>
+                        <div class="details">Seans süresi: 45-50 dakika</div>
+                    </div>
+                    <a href="/randevu/cocuk-ergen" class="btn">Randevu Al</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features-section">
+        <div class="container">
+            <h2>Neden Online Terapi?</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Konfor ve Kolaylık</h3>
+                    <p>Evinizin veya ofisinizin konforunda terapi seanslarına katılın. Yolda geçen süre ve stres olmadan, size en uygun ortamda destek alın.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Gizlilik ve Güven</h3>
+                    <p>Tamamen şifreli ve güvenli görüşme ortamı sağlıyoruz. Mahremiyet ve gizlilik ilkelerimiz en üst düzeyde korunmaktadır.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Erişilebilirlik</h3>
+                    <p>Coğrafi kısıtlamalar olmadan, uzman terapistlerle görüşebilirsiniz. Bulunduğunuz yer artık bir engel değil.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">⏰</div>
+                    <h3>Esneklik</h3>
+                    <p>Size en uygun saatlerde terapi seansı planlayabilirsiniz. Yoğun çalışma saatleriniz veya kişisel programınız artık engel değil.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials">
+        <div class="container">
+            <h2>Danışanlarımızdan Yorumlar</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Online terapi seansları sayesinde evden çıkmadan profesyonel destek alabildim. Benim için büyük bir kolaylık oldu, özellikle yoğun iş temposu içinde zaman ayırmak daha kolay oldu.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/images/avatars/testimonial1.jpg" alt="Ayşe Y.">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Ayşe Y.</div>
+                            <div class="author-title">35, İstanbul</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Terapistimle uyumumuz harika oldu. Çift terapisi için başvurmuştuk ve ilişkimizde yaşadığımız sorunları çözmemize gerçekten yardımcı oldu. Artık daha sağlıklı iletişim kurabiliyoruz.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/images/avatars/testimonial2.jpg" alt="Mehmet ve Selin K.">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Mehmet ve Selin K.</div>
+                            <div class="author-title">28 ve 30, Ankara</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Kızımın kaygı sorunlarıyla başa çıkmasına yardımcı olmak için çocuk terapistine danıştık. Hem kızıma hem de ebeveynlik becerilerimize çok faydası oldu. Şimdi çok daha iyi durumdayız.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/images/avatars/testimonial3.jpg" alt="Deniz T.">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Deniz T.</div>
+                            <div class="author-title">42, İzmir</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Daha Sağlıklı Bir Yaşam İçin İlk Adımı Atın</h2>
+            <p>Uzman terapistlerimiz size yardımcı olmak için hazır. Hemen bir terapist seçin ve ilk görüşmenizi planlayın.</p>
+            <a href="/terapistler" class="btn btn-white">Terapist Bul</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Hızlı Erişim</h4>
+                    <ul>
+                        <li><a href="/">Ana Sayfa</a></li>
+                        <li><a href="/terapistler">Terapistler</a></li>
+                        <li><a href="/hizmetler">Hizmetler</a></li>
+                        <li><a href="/hakkimizda">Hakkımızda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Yardım</h4>
+                    <ul>
+                        <li><a href="/sss">Sıkça Sorulan Sorular</a></li>
+                        <li><a href="/iletisim">İletişim</a></li>
+                        <li><a href="/gizlilik">Gizlilik Politikası</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>İletişim</h4>
+                    <ul>
+                        <li>Email: info@psikdestekplatformu.com</li>
+                        <li>Telefon: +90 212 123 45 67</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; <%= new Date().getFullYear() %> Psikolojik Destek Platformu. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

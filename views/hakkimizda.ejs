@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #4b6cb7;
+            color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ddd;
+        }
+        
+        .page-title {
+            background-color: #f0f4ff;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .page-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-intro {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .about-intro p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .about-section {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+        .about-content h2 {
+            font-size: 2rem;
+            color: #4b6cb7;
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .mission-values {
+            padding: 80px 0;
+            background-color: #f0f4ff;
+            text-align: center;
+        }
+        
+        .mission-values h2 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 50px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-box {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .value-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: #4b6cb7;
+            margin-bottom: 20px;
+        }
+        
+        .value-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .value-box p {
+            color: #666;
+        }
+        
+        .team-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .team-section h2 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 50px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .member-image img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 25px;
+        }
+        
+        .member-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .member-title {
+            font-size: 1rem;
+            color: #4b6cb7;
+            margin-bottom: 15px;
+        }
+        
+        .member-bio {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0f4ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4b6cb7;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            background-color: #4b6cb7;
+            color: white;
+        }
+        
+        .timeline-section {
+            padding: 80px 0;
+            background-color: #f0f4ff;
+        }
+        
+        .timeline-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 50px;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #4b6cb7;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: calc(50% - 40px);
+            box-sizing: border-box;
+        }
+        
+        .timeline-item.left {
+            left: 0;
+        }
+        
+        .timeline-item.right {
+            left: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid #4b6cb7;
+            top: 22px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item.right::after {
+            left: -10px;
+        }
+        
+        .timeline-item.left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #fff;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .timeline-item.right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #fff;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #4b6cb7;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .timeline-text {
+            color: #666;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #f0f0f0;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #4b6cb7;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item.right {
+                left: 0%;
+            }
+            
+            .timeline-item.left::after, .timeline-item.right::after {
+                left: 22px;
+            }
+            
+            .timeline-item.left::before, .timeline-item.right::before {
+                left: 62px;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            
+            header .container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Psikolojik Destek Platformu</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/terapistler">Terapistler</a></li>
+                    <li><a href="/hizmetler">Hizmetler</a></li>
+                    <li><a href="/hakkimizda">Hakkımızda</a></li>
+                    <li><a href="/api/auth/login">Giriş Yap</a></li>
+                    <li><a href="/api/auth/register">Kayıt Ol</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-title">
+        <div class="container">
+            <h1>Hakkımızda</h1>
+            <p>Online psikolojik destek platformumuz ve arkasındaki ekip hakkında bilgi edinin.</p>
+        </div>
+    </section>
+    
+    <section class="about-intro">
+        <div class="container">
+            <p>Psikolojik Destek Platformu, ruh sağlığı hizmetlerini herkes için erişilebilir kılma amacıyla 2023 yılında kurulmuştur. Platformumuz, kolay erişilebilir, etkili ve kişiselleştirilmiş terapiyi herkesin hakkı olduğuna inanarak yola çıkmıştır.</p>
+            <p>Kullanıcı odaklı yaklaşımımız ve uzman kadromuzla, kişilerin ruh sağlığı ihtiyaçlarını en iyi şekilde karşılamak için çalışıyoruz.</p>
+        </div>
+    </section>
+    
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="/images/about/team-photo.jpg" alt="Ekibimiz">
+                </div>
+                <div class="about-content">
+                    <h2>Hikayemiz</h2>
+                    <p>Psikolojik Destek Platformu, psikolojik destek hizmetlerine erişimde yaşanan zorlukları aşmak için yola çıktı. Platformumuzun kurucuları, ruh sağlığı hizmetlerine erişimin coğrafi, ekonomik ve sosyal bariyerler nedeniyle kısıtlı olduğunu fark etti.</p>
+                    <p>Online psikoloji platformumuz, bu bariyerleri aşarak ruh sağlığı hizmetlerini herkes için erişilebilir kılma vizyonuyla oluşturuldu. Teknoloji ve uzman klinik psikoloji bilgisini birleştirerek, bireylerin kendi ortamlarında, güvenli ve etkili psikolojik destek alabilmelerini sağlıyoruz.</p>
+                    <p>Bugün, platformumuz Türkiye'nin dört bir yanındaki danışanlara hizmet vermekte ve sürekli büyüyen uzman terapist ağımızla ruh sağlığı alanında öncü bir konuma gelmektedir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="mission-values">
+        <div class="container">
+            <h2>Misyonumuz ve Değerlerimiz</h2>
+            <div class="values-grid">
+                <div class="value-box">
+                    <div class="value-icon">🔍</div>
+                    <h3>Erişilebilirlik</h3>
+                    <p>Ruh sağlığı hizmetlerine herkesin, her yerden ulaşabilmesi için çalışıyoruz. Coğrafi ve ekonomik engelleri en aza indirerek, kaliteli psikolojik destek hizmetlerini daha geniş kitlelere ulaştırıyoruz.</p>
+                </div>
+                <div class="value-box">
+                    <div class="value-icon">💫</div>
+                    <h3>Profesyonellik</h3>
+                    <p>Platformumuzda yer alan tüm terapistlerimiz, alanlarında uzman, deneyimli ve gerekli tüm sertifika ve lisanslara sahip profesyonellerdir. Danışanlarımıza en yüksek kalitede hizmet sunmayı taahhüt ediyoruz.</p>
+                </div>
+                <div class="value-box">
+                    <div class="value-icon">🔒</div>
+                    <h3>Gizlilik</h3>
+                    <p>Danışanlarımızın mahremiyeti ve gizliliği bizim için en önemli önceliktir. Tüm görüşmeler ve kişisel bilgiler, en üst düzey güvenlik önlemleriyle korunmaktadır.</p>
+                </div>
+                <div class="value-box">
+                    <div class="value-icon">❤️</div>
+                    <h3>Empati</h3>
+                    <p>Her bireyin özel ve biricik olduğuna inanıyoruz. Danışanlarımızın ihtiyaçlarını anlayarak, kişiye özel çözümler sunmak için empati ve anlayış ile yaklaşıyoruz.</p>
+                </div>
+                <div class="value-box">
+                    <div class="value-icon">🌱</div>
+                    <h3>Sürekli Gelişim</h3>
+                    <p>Ruh sağlığı alanındaki en son gelişmeleri takip ediyor ve platformumuzu sürekli olarak iyileştiriyoruz. Terapistlerimiz düzenli olarak eğitimlerle bilgilerini güncellemektedir.</p>
+                </div>
+                <div class="value-box">
+                    <div class="value-icon">🤝</div>
+                    <h3>İşbirliği</h3>
+                    <p>Danışanlarımızın ruh sağlığı yolculuğunda aktif bir ortak olarak çalışıyoruz. Birlikte belirlenecek hedefler doğrultusunda, kişinin kendi güçlü yanlarını keşfetmesine yardımcı oluyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="team-section">
+        <div class="container">
+            <h2>Kurucu Ekibimiz</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/images/team/founder1.jpg" alt="Dr. Ayşe Yılmaz">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Dr. Ayşe Yılmaz</h3>
+                        <p class="member-title">Kurucu ve Klinik Psikolog</p>
+                        <p class="member-bio">10 yılı aşkın klinik psikoloji deneyimiyle, Dr. Yılmaz platformumuzun kurucusu ve vizyoneridir. Bilgi ve teknolojinin ruh sağlığı hizmetlerini dönüştürme potansiyeline inanmaktadır.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">🌐</a>
+                            <a href="#" class="social-link">📱</a>
+                            <a href="#" class="social-link">📧</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/images/team/founder2.jpg" alt="Mehmet Demir">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Mehmet Demir</h3>
+                        <p class="member-title">Kurucu ve Teknoloji Direktörü</p>
+                        <p class="member-bio">Sağlık teknolojileri alanında 15 yıllık deneyime sahip olan Mehmet, platformumuzun teknolojik altyapısını geliştirmekte ve sürekli iyileştirmektedir.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">🌐</a>
+                            <a href="#" class="social-link">📱</a>
+                            <a href="#" class="social-link">📧</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/images/team/founder3.jpg" alt="Zeynep Kaya">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Zeynep Kaya</h3>
+                        <p class="member-title">Operasyon Direktörü</p>
+                        <p class="member-bio">Sağlık yönetimi alanındaki geniş tecrübesiyle Zeynep, platformumuzun günlük operasyonlarını yönetmekte ve danışan memnuniyetini en üst düzeye çıkarmak için çalışmaktadır.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">🌐</a>
+                            <a href="#" class="social-link">📱</a>
+                            <a href="#" class="social-link">📧</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/images/team/founder4.jpg" alt="Prof. Dr. Ali Yıldız">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Prof. Dr. Ali Yıldız</h3>
+                        <p class="member-title">Bilimsel Danışman</p>
+                        <p class="member-bio">Uzun yıllar akademide görev yapan Prof. Dr. Yıldız, platformumuza bilimsel altyapı sağlamakta ve en son araştırma ve uygulamaları entegre etmemize yardımcı olmaktadır.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">🌐</a>
+                            <a href="#" class="social-link">📱</a>
+                            <a href="#" class="social-link">📧</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="timeline-section">
+        <div class="container">
+            <h2>Yolculuğumuz</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Ocak 2023</div>
+                        <h3 class="timeline-title">Fikrin Doğuşu</h3>
+                        <p class="timeline-text">Psikolojik Destek Platformu fikri, ruh sağlığı hizmetlerini daha erişilebilir kılma vizyonuyla ortaya çıktı.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Mart 2023</div>
+                        <h3 class="timeline-title">İlk Ekibin Kurulması</h3>
+                        <p class="timeline-text">Kurucu ekip bir araya gelerek platformun temellerini attı ve ilk prototip geliştirildi.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Haziran 2023</div>
+                        <h3 class="timeline-title">Beta Sürümün Lansmanı</h3>
+                        <p class="timeline-text">İlk beta sürümü sınırlı sayıda kullanıcı ve terapist ile test edilmeye başlandı.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Eylül 2023</div>
+                        <h3 class="timeline-title">İlk Yatırım ve Büyüme</h3>
+                        <p class="timeline-text">İlk yatırım turumuzun kapanmasıyla birlikte ekibimiz büyüdü ve platformumuzu geliştirmeye devam ettik.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Ocak 2024</div>
+                        <h3 class="timeline-title">Resmi Lansman</h3>
+                        <p class="timeline-text">Platformumuz tüm Türkiye'den danışanlara ve terapistlere açıldı.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Mart 2024</div>
+                        <h3 class="timeline-title">1000 Kullanıcı Hedefine Ulaşılması</h3>
+                        <p class="timeline-text">Platformumuz ilk 1000 aktif kullanıcı hedefine ulaştı ve 50'den fazla uzman terapist ağına sahip oldu.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Bugün</div>
+                        <h3 class="timeline-title">Sürekli Büyüme ve Gelişim</h3>
+                        <p class="timeline-text">Her geçen gün daha fazla danışana ve terapiste ulaşarak, ruh sağlığı hizmetlerini daha erişilebilir kılma yolunda ilerliyoruz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Hizmetlerimizden Yararlanmaya Başlayın</h2>
+            <p>Online psikolojik destek platformumuzda size uygun bir terapist ile tanışın ve ilk seansınızı planlayın.</p>
+            <a href="/terapistler" class="btn">Terapist Bul</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Hızlı Erişim</h4>
+                    <ul>
+                        <li><a href="/">Ana Sayfa</a></li>
+                        <li><a href="/terapistler">Terapistler</a></li>
+                        <li><a href="/hizmetler">Hizmetler</a></li>
+                        <li><a href="/hakkimizda">Hakkımızda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Yardım</h4>
+                    <ul>
+                        <li><a href="/sss">Sıkça Sorulan Sorular</a></li>
+                        <li><a href="/iletisim">İletişim</a></li>
+                        <li><a href="/gizlilik">Gizlilik Politikası</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>İletişim</h4>
+                    <ul>
+                        <li>Email: info@psikdestekplatformu.com</li>
+                        <li>Telefon: +90 212 123 45 67</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; <%= new Date().getFullYear() %> Psikolojik Destek Platformu. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

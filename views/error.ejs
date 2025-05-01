@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        
+        .error-container {
+            max-width: 600px;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+        
+        .error-face {
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #4b6cb7;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #3a5491;
+        }
+        
+        .help-text {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-face">😕</div>
+        <h1><%= title %></h1>
+        <p><%= message %></p>
+        <a href="/" class="btn">Ana Sayfaya Dön</a>
+        <p class="help-text">Sorun devam ederse lütfen destek ekibimizle iletişime geçin.</p>
+    </div>
+    
+    <div class="footer">
+        &copy; <%= new Date().getFullYear() %> Psikolojik Destek Platformu
+    </div>
+</body>
+</html>
