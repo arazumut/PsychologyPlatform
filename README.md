@@ -1,6 +1,5 @@
 # Psikolojik Destek Platformu
 
-![Psikolojik Destek Platformu]
 
 ## 📋 Proje Hakkında
 
