@@ -144,6 +144,9 @@ Platform tam olarak mobil uyumludur ve aşağıdaki cihazlardan erişilebilir:
 4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
 5. Bir Pull Request açın
 
+<img width="1710" alt="Ekran Resmi 2025-05-01 17 40 48" src="https://github.com/user-attachments/assets/0fdf2433-6c04-4c8c-bd3c-ed69e5807db6" />
+
+
 
 ---
 
